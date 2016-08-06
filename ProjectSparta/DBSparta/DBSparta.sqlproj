@@ -60,6 +60,16 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Country.sql" />
+    <Build Include="State.sql" />
+    <Build Include="College.sql" />
+    <Build Include="District.sql" />
+    <Build Include="Course.sql" />
+    <Build Include="CourseDetails.sql" />
+    <Build Include="Author.sql" />
+    <Build Include="TableOfContent.sql" />
+    <Build Include="Chapter.sql" />
+    <Build Include="SubChapter.sql" />
+    <Build Include="Skills.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="DBSparta.refactorlog" />
