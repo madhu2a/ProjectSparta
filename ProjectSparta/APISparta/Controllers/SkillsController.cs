@@ -15,7 +15,7 @@ namespace APISparta.Controllers
 {
     public class SkillsController : ApiController
     {
-        private dbSpartaEntities db = new dbSpartaEntities();
+        private dbSpartaEntities1 db = new dbSpartaEntities1();
 
         // GET: api/Skills
         public IQueryable<Skill> GetSkills()
@@ -81,22 +81,7 @@ namespace APISparta.Controllers
             }
 
             db.Skills.Add(skill);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (SkillExists(skill.SkillId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = skill.SkillId }, skill);
         }

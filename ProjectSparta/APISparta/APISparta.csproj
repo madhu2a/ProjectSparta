@@ -125,7 +125,6 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\SubChaptersController.cs" />
     <Compile Include="Controllers\TableOfContentsController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\vwTableOfContentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -134,6 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\APISparta.pubxml" />
+    <None Include="Properties\PublishProfiles\APISparta20160809122302 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

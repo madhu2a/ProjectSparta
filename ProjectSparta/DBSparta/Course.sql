@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Course]
 (
-	[CourseId] INT NOT NULL , 
+	[CourseId] INT NOT NULL IDENTITY, 
     [CourseName] VARCHAR(150) NOT NULL, 
     [CourseDesc] VARCHAR(MAX) NULL, 
     [Duration] DECIMAL(18, 2) NULL, 

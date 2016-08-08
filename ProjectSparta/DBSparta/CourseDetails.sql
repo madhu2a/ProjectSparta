@@ -6,7 +6,7 @@
     [DateOfAdd] DATETIME NULL, 
     [Duration] VARCHAR(50) NULL, 
     [Rating] FLOAT NULL, 
-    CONSTRAINT [FK_CourseDetails_Course] FOREIGN KEY ([CourseId]) REFERENCES [Course]([CourseId]), 
-    CONSTRAINT [FK_CourseDetails_Author] FOREIGN KEY ([AuthorId]) REFERENCES [Author]([AuthorId]),
+    CONSTRAINT [FK_CourseDetails_Course] FOREIGN KEY ([CourseId]) REFERENCES [Course]([CourseId]) ON DELETE CASCADE, 
+    CONSTRAINT [FK_CourseDetails_Author] FOREIGN KEY ([AuthorId]) REFERENCES [Author]([AuthorId]) ON DELETE CASCADE,
 
 )

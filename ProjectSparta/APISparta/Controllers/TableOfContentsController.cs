@@ -15,7 +15,7 @@ namespace APISparta.Controllers
 {
     public class TableOfContentsController : ApiController
     {
-        private dbSpartaEntities db = new dbSpartaEntities();
+        private dbSpartaEntities1 db = new dbSpartaEntities1();
 
         // GET: api/TableOfContents
         public IQueryable<TableOfContent> GetTableOfContents()

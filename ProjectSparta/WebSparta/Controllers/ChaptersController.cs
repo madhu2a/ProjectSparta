@@ -13,7 +13,7 @@ namespace WebSparta.Controllers
 {
     public class ChaptersController : Controller
     {
-        private dbSpartaEntities db = new dbSpartaEntities();
+        private dbSpartaEntities1 db = new dbSpartaEntities1();
 
         // GET: Chapters
         public async Task<ActionResult> Index()

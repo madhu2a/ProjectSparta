@@ -15,7 +15,7 @@ namespace APISparta.Controllers
 {
     public class SubChaptersController : ApiController
     {
-        private dbSpartaEntities db = new dbSpartaEntities();
+        private dbSpartaEntities1 db = new dbSpartaEntities1();
 
         // GET: api/SubChapters
         public IQueryable<SubChapter> GetSubChapters()
@@ -81,22 +81,7 @@ namespace APISparta.Controllers
             }
 
             db.SubChapters.Add(subChapter);
-
-            try
-            {
-                await db.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (SubChapterExists(subChapter.SubChapterId))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = subChapter.SubChapterId }, subChapter);
         }

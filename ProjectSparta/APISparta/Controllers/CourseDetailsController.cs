@@ -15,7 +15,7 @@ namespace APISparta.Controllers
 {
     public class CourseDetailsController : ApiController
     {
-        private dbSpartaEntities db = new dbSpartaEntities();
+        private dbSpartaEntities1 db = new dbSpartaEntities1();
 
         // GET: api/CourseDetails
         public IQueryable<CourseDetail> GetCourseDetails()

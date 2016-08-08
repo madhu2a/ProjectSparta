@@ -181,7 +181,6 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\SubChaptersController.cs" />
     <Compile Include="Controllers\TableOfContentsController.cs" />
-    <Compile Include="Controllers\vwTableOfContentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -201,6 +200,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\WebSparta.pubxml" />
+    <None Include="Properties\PublishProfiles\WebSparta20160809122746 - Web Deploy %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\WebSparta20160809122746 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -302,11 +303,6 @@
     <Content Include="Views\TableOfContents\Details.cshtml" />
     <Content Include="Views\TableOfContents\Edit.cshtml" />
     <Content Include="Views\TableOfContents\Index.cshtml" />
-    <Content Include="Views\vwTableOfContents\Create.cshtml" />
-    <Content Include="Views\vwTableOfContents\Delete.cshtml" />
-    <Content Include="Views\vwTableOfContents\Details.cshtml" />
-    <Content Include="Views\vwTableOfContents\Edit.cshtml" />
-    <Content Include="Views\vwTableOfContents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

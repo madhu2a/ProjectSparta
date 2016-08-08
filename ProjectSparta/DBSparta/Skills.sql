@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Skills]
 (
-	[SkillId] INT NOT NULL , 
+	[SkillId] INT NOT NULL IDENTITY, 
     [Name] VARCHAR(50) NULL, 
     [Recognition] VARCHAR(50) NULL, 
     [Description] VARCHAR(50) NULL, 
