@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/Colleges/5
         [ResponseType(typeof(College))]
-        public IHttpActionResult GetCollege(int id)
+        public async Task<IHttpActionResult> GetCollege(int id)
         {
-            College college = db.Colleges.Find(id);
+            College college = await db.Colleges.FindAsync(id);
             if (college == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/Colleges/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCollege(int id, College college)
+        public async Task<IHttpActionResult> PutCollege(int id, College college)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/Colleges
         [ResponseType(typeof(College))]
-        public IHttpActionResult PostCollege(College college)
+        public async Task<IHttpActionResult> PostCollege(College college)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/Colleges/5
         [ResponseType(typeof(College))]
-        public IHttpActionResult DeleteCollege(int id)
+        public async Task<IHttpActionResult> DeleteCollege(int id)
         {
-            College college = db.Colleges.Find(id);
+            College college = await db.Colleges.FindAsync(id);
             if (college == null)
             {
                 return NotFound();
             }
 
             db.Colleges.Remove(college);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(college);
         }

@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/SubChapters/5
         [ResponseType(typeof(SubChapter))]
-        public IHttpActionResult GetSubChapter(int id)
+        public async Task<IHttpActionResult> GetSubChapter(int id)
         {
-            SubChapter subChapter = db.SubChapters.Find(id);
+            SubChapter subChapter = await db.SubChapters.FindAsync(id);
             if (subChapter == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/SubChapters/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSubChapter(int id, SubChapter subChapter)
+        public async Task<IHttpActionResult> PutSubChapter(int id, SubChapter subChapter)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/SubChapters
         [ResponseType(typeof(SubChapter))]
-        public IHttpActionResult PostSubChapter(SubChapter subChapter)
+        public async Task<IHttpActionResult> PostSubChapter(SubChapter subChapter)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/SubChapters/5
         [ResponseType(typeof(SubChapter))]
-        public IHttpActionResult DeleteSubChapter(int id)
+        public async Task<IHttpActionResult> DeleteSubChapter(int id)
         {
-            SubChapter subChapter = db.SubChapters.Find(id);
+            SubChapter subChapter = await db.SubChapters.FindAsync(id);
             if (subChapter == null)
             {
                 return NotFound();
             }
 
             db.SubChapters.Remove(subChapter);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(subChapter);
         }

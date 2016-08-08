@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/TableOfContents/5
         [ResponseType(typeof(TableOfContent))]
-        public IHttpActionResult GetTableOfContent(int id)
+        public async Task<IHttpActionResult> GetTableOfContent(int id)
         {
-            TableOfContent tableOfContent = db.TableOfContents.Find(id);
+            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
             if (tableOfContent == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/TableOfContents/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutTableOfContent(int id, TableOfContent tableOfContent)
+        public async Task<IHttpActionResult> PutTableOfContent(int id, TableOfContent tableOfContent)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/TableOfContents
         [ResponseType(typeof(TableOfContent))]
-        public IHttpActionResult PostTableOfContent(TableOfContent tableOfContent)
+        public async Task<IHttpActionResult> PostTableOfContent(TableOfContent tableOfContent)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/TableOfContents/5
         [ResponseType(typeof(TableOfContent))]
-        public IHttpActionResult DeleteTableOfContent(int id)
+        public async Task<IHttpActionResult> DeleteTableOfContent(int id)
         {
-            TableOfContent tableOfContent = db.TableOfContents.Find(id);
+            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
             if (tableOfContent == null)
             {
                 return NotFound();
             }
 
             db.TableOfContents.Remove(tableOfContent);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(tableOfContent);
         }

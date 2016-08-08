@@ -21,11 +21,21 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    <li>@Html.ActionLink("Authors", "Index", "Authors")</li>
+                    <li>@Html.ActionLink("Chapters", "Index", "Chapters")</li>
+                    <li>@Html.ActionLink("Colleges", "Index", "Colleges")</li>
+                    <li>@Html.ActionLink("Countries", "Index", "Countries")</li>
+                    <li>@Html.ActionLink("CourseDetails", "Index", "CourseDetails")</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+                    <li>@Html.ActionLink("Districts", "Index", "Districts")</li>
+                    <li>@Html.ActionLink("Skills", "Index", "Skills")</li>
+                    <li>@Html.ActionLink("States", "Index", "States")</li>
+                    <li>@Html.ActionLink("SubChapters", "Index", "SubChapters")</li>
+                    <li>@Html.ActionLink("TableOfContents", "About", "TableOfContents")</li>
+                    @*<li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/Countries/5
         [ResponseType(typeof(Country))]
-        public IHttpActionResult GetCountry(int id)
+        public async Task<IHttpActionResult> GetCountry(int id)
         {
-            Country country = db.Countries.Find(id);
+            Country country = await db.Countries.FindAsync(id);
             if (country == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/Countries/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCountry(int id, Country country)
+        public async Task<IHttpActionResult> PutCountry(int id, Country country)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/Countries
         [ResponseType(typeof(Country))]
-        public IHttpActionResult PostCountry(Country country)
+        public async Task<IHttpActionResult> PostCountry(Country country)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/Countries/5
         [ResponseType(typeof(Country))]
-        public IHttpActionResult DeleteCountry(int id)
+        public async Task<IHttpActionResult> DeleteCountry(int id)
         {
-            Country country = db.Countries.Find(id);
+            Country country = await db.Countries.FindAsync(id);
             if (country == null)
             {
                 return NotFound();
             }
 
             db.Countries.Remove(country);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(country);
         }

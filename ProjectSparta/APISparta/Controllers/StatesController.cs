@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -19,14 +20,16 @@ namespace APISparta.Controllers
         // GET: api/States
         public IQueryable<State> GetStates()
         {
+            db.Configuration.LazyLoadingEnabled = false;
+
             return db.States;
         }
 
         // GET: api/States/5
         [ResponseType(typeof(State))]
-        public IHttpActionResult GetState(int id)
+        public async Task<IHttpActionResult> GetState(int id)
         {
-            State state = db.States.Find(id);
+            State state = await db.States.FindAsync(id);
             if (state == null)
             {
                 return NotFound();
@@ -37,7 +40,7 @@ namespace APISparta.Controllers
 
         // PUT: api/States/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutState(int id, State state)
+        public async Task<IHttpActionResult> PutState(int id, State state)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +56,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +75,7 @@ namespace APISparta.Controllers
 
         // POST: api/States
         [ResponseType(typeof(State))]
-        public IHttpActionResult PostState(State state)
+        public async Task<IHttpActionResult> PostState(State state)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +86,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +105,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/States/5
         [ResponseType(typeof(State))]
-        public IHttpActionResult DeleteState(int id)
+        public async Task<IHttpActionResult> DeleteState(int id)
         {
-            State state = db.States.Find(id);
+            State state = await db.States.FindAsync(id);
             if (state == null)
             {
                 return NotFound();
             }
 
             db.States.Remove(state);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(state);
         }

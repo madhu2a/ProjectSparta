@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/Authors/5
         [ResponseType(typeof(Author))]
-        public IHttpActionResult GetAuthor(int id)
+        public async Task<IHttpActionResult> GetAuthor(int id)
         {
-            Author author = db.Authors.Find(id);
+            Author author = await db.Authors.FindAsync(id);
             if (author == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/Authors/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutAuthor(int id, Author author)
+        public async Task<IHttpActionResult> PutAuthor(int id, Author author)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/Authors
         [ResponseType(typeof(Author))]
-        public IHttpActionResult PostAuthor(Author author)
+        public async Task<IHttpActionResult> PostAuthor(Author author)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/Authors/5
         [ResponseType(typeof(Author))]
-        public IHttpActionResult DeleteAuthor(int id)
+        public async Task<IHttpActionResult> DeleteAuthor(int id)
         {
-            Author author = db.Authors.Find(id);
+            Author author = await db.Authors.FindAsync(id);
             if (author == null)
             {
                 return NotFound();
             }
 
             db.Authors.Remove(author);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(author);
         }

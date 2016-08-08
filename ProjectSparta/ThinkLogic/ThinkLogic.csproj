@@ -52,83 +52,83 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Author.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="Chapter.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="College.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="Country.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="CourseDetail.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DAL.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DAL.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DAL.edmx</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="District.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logics.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logics.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logics.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logics.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logics.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logics.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skill.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="State.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="SubChapter.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="TableOfContent.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
     <Compile Include="vwTableOfContent.cs">
-      <DependentUpon>DAL.tt</DependentUpon>
+      <DependentUpon>Logics.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="DAL.edmx">
+    <EntityDeploy Include="Logics.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DAL.Designer.cs</LastGenOutput>
+      <LastGenOutput>Logics.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DAL.edmx.diagram">
-      <DependentUpon>DAL.edmx</DependentUpon>
+    <None Include="Logics.edmx.diagram">
+      <DependentUpon>Logics.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DAL.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DAL.edmx</DependentUpon>
-      <LastGenOutput>DAL.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DAL.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DAL.edmx</DependentUpon>
-      <LastGenOutput>DAL.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Logics.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Logics.edmx</DependentUpon>
+      <LastGenOutput>Logics.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Logics.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Logics.edmx</DependentUpon>
+      <LastGenOutput>Logics.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

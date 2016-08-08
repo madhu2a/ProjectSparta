@@ -168,8 +168,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
+    <Compile Include="Controllers\ChaptersController.cs" />
+    <Compile Include="Controllers\CollegesController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\CourseDetailsController.cs" />
+    <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SkillsController.cs" />
+    <Compile Include="Controllers\StatesController.cs" />
+    <Compile Include="Controllers\SubChaptersController.cs" />
+    <Compile Include="Controllers\TableOfContentsController.cs" />
+    <Compile Include="Controllers\vwTableOfContentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -235,6 +247,66 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Authors\Create.cshtml" />
+    <Content Include="Views\Authors\Delete.cshtml" />
+    <Content Include="Views\Authors\Details.cshtml" />
+    <Content Include="Views\Authors\Edit.cshtml" />
+    <Content Include="Views\Authors\Index.cshtml" />
+    <Content Include="Views\Chapters\Create.cshtml" />
+    <Content Include="Views\Chapters\Delete.cshtml" />
+    <Content Include="Views\Chapters\Details.cshtml" />
+    <Content Include="Views\Chapters\Edit.cshtml" />
+    <Content Include="Views\Chapters\Index.cshtml" />
+    <Content Include="Views\Colleges\Create.cshtml" />
+    <Content Include="Views\Colleges\Delete.cshtml" />
+    <Content Include="Views\Colleges\Details.cshtml" />
+    <Content Include="Views\Colleges\Edit.cshtml" />
+    <Content Include="Views\Colleges\Index.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\Courses\Create.cshtml" />
+    <Content Include="Views\Courses\Delete.cshtml" />
+    <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Courses\Edit.cshtml" />
+    <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\CourseDetails\Create.cshtml" />
+    <Content Include="Views\CourseDetails\Delete.cshtml" />
+    <Content Include="Views\CourseDetails\Details.cshtml" />
+    <Content Include="Views\CourseDetails\Edit.cshtml" />
+    <Content Include="Views\CourseDetails\Index.cshtml" />
+    <Content Include="Views\Districts\Create.cshtml" />
+    <Content Include="Views\Districts\Delete.cshtml" />
+    <Content Include="Views\Districts\Details.cshtml" />
+    <Content Include="Views\Districts\Edit.cshtml" />
+    <Content Include="Views\Districts\Index.cshtml" />
+    <Content Include="Views\Skills\Create.cshtml" />
+    <Content Include="Views\Skills\Delete.cshtml" />
+    <Content Include="Views\Skills\Details.cshtml" />
+    <Content Include="Views\Skills\Edit.cshtml" />
+    <Content Include="Views\Skills\Index.cshtml" />
+    <Content Include="Views\States\Create.cshtml" />
+    <Content Include="Views\States\Delete.cshtml" />
+    <Content Include="Views\States\Details.cshtml" />
+    <Content Include="Views\States\Edit.cshtml" />
+    <Content Include="Views\States\Index.cshtml" />
+    <Content Include="Views\SubChapters\Create.cshtml" />
+    <Content Include="Views\SubChapters\Delete.cshtml" />
+    <Content Include="Views\SubChapters\Details.cshtml" />
+    <Content Include="Views\SubChapters\Edit.cshtml" />
+    <Content Include="Views\SubChapters\Index.cshtml" />
+    <Content Include="Views\TableOfContents\Create.cshtml" />
+    <Content Include="Views\TableOfContents\Delete.cshtml" />
+    <Content Include="Views\TableOfContents\Details.cshtml" />
+    <Content Include="Views\TableOfContents\Edit.cshtml" />
+    <Content Include="Views\TableOfContents\Index.cshtml" />
+    <Content Include="Views\vwTableOfContents\Create.cshtml" />
+    <Content Include="Views\vwTableOfContents\Delete.cshtml" />
+    <Content Include="Views\vwTableOfContents\Details.cshtml" />
+    <Content Include="Views\vwTableOfContents\Edit.cshtml" />
+    <Content Include="Views\vwTableOfContents\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -246,6 +318,12 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThinkLogic\ThinkLogic.csproj">
+      <Project>{c4d8f4b4-8929-45e8-8899-cef7a9fc973b}</Project>
+      <Name>ThinkLogic</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

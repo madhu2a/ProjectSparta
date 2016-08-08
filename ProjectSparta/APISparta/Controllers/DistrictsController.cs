@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/Districts/5
         [ResponseType(typeof(District))]
-        public IHttpActionResult GetDistrict(int id)
+        public async Task<IHttpActionResult> GetDistrict(int id)
         {
-            District district = db.Districts.Find(id);
+            District district = await db.Districts.FindAsync(id);
             if (district == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/Districts/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutDistrict(int id, District district)
+        public async Task<IHttpActionResult> PutDistrict(int id, District district)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/Districts
         [ResponseType(typeof(District))]
-        public IHttpActionResult PostDistrict(District district)
+        public async Task<IHttpActionResult> PostDistrict(District district)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/Districts/5
         [ResponseType(typeof(District))]
-        public IHttpActionResult DeleteDistrict(int id)
+        public async Task<IHttpActionResult> DeleteDistrict(int id)
         {
-            District district = db.Districts.Find(id);
+            District district = await db.Districts.FindAsync(id);
             if (district == null)
             {
                 return NotFound();
             }
 
             db.Districts.Remove(district);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(district);
         }

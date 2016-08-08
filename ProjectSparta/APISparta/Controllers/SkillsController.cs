@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/Skills/5
         [ResponseType(typeof(Skill))]
-        public IHttpActionResult GetSkill(int id)
+        public async Task<IHttpActionResult> GetSkill(int id)
         {
-            Skill skill = db.Skills.Find(id);
+            Skill skill = await db.Skills.FindAsync(id);
             if (skill == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/Skills/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSkill(int id, Skill skill)
+        public async Task<IHttpActionResult> PutSkill(int id, Skill skill)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/Skills
         [ResponseType(typeof(Skill))]
-        public IHttpActionResult PostSkill(Skill skill)
+        public async Task<IHttpActionResult> PostSkill(Skill skill)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/Skills/5
         [ResponseType(typeof(Skill))]
-        public IHttpActionResult DeleteSkill(int id)
+        public async Task<IHttpActionResult> DeleteSkill(int id)
         {
-            Skill skill = db.Skills.Find(id);
+            Skill skill = await db.Skills.FindAsync(id);
             if (skill == null)
             {
                 return NotFound();
             }
 
             db.Skills.Remove(skill);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(skill);
         }

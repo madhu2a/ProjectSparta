@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/CourseDetails/5
         [ResponseType(typeof(CourseDetail))]
-        public IHttpActionResult GetCourseDetail(int id)
+        public async Task<IHttpActionResult> GetCourseDetail(int id)
         {
-            CourseDetail courseDetail = db.CourseDetails.Find(id);
+            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
             if (courseDetail == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/CourseDetails/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCourseDetail(int id, CourseDetail courseDetail)
+        public async Task<IHttpActionResult> PutCourseDetail(int id, CourseDetail courseDetail)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/CourseDetails
         [ResponseType(typeof(CourseDetail))]
-        public IHttpActionResult PostCourseDetail(CourseDetail courseDetail)
+        public async Task<IHttpActionResult> PostCourseDetail(CourseDetail courseDetail)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/CourseDetails/5
         [ResponseType(typeof(CourseDetail))]
-        public IHttpActionResult DeleteCourseDetail(int id)
+        public async Task<IHttpActionResult> DeleteCourseDetail(int id)
         {
-            CourseDetail courseDetail = db.CourseDetails.Find(id);
+            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
             if (courseDetail == null)
             {
                 return NotFound();
             }
 
             db.CourseDetails.Remove(courseDetail);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(courseDetail);
         }

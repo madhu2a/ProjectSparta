@@ -6,6 +6,7 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using ThinkLogic;
@@ -24,9 +25,9 @@ namespace APISparta.Controllers
 
         // GET: api/Chapters/5
         [ResponseType(typeof(Chapter))]
-        public IHttpActionResult GetChapter(int id)
+        public async Task<IHttpActionResult> GetChapter(int id)
         {
-            Chapter chapter = db.Chapters.Find(id);
+            Chapter chapter = await db.Chapters.FindAsync(id);
             if (chapter == null)
             {
                 return NotFound();
@@ -37,7 +38,7 @@ namespace APISparta.Controllers
 
         // PUT: api/Chapters/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutChapter(int id, Chapter chapter)
+        public async Task<IHttpActionResult> PutChapter(int id, Chapter chapter)
         {
             if (!ModelState.IsValid)
             {
@@ -53,7 +54,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -72,7 +73,7 @@ namespace APISparta.Controllers
 
         // POST: api/Chapters
         [ResponseType(typeof(Chapter))]
-        public IHttpActionResult PostChapter(Chapter chapter)
+        public async Task<IHttpActionResult> PostChapter(Chapter chapter)
         {
             if (!ModelState.IsValid)
             {
@@ -83,7 +84,7 @@ namespace APISparta.Controllers
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateException)
             {
@@ -102,16 +103,16 @@ namespace APISparta.Controllers
 
         // DELETE: api/Chapters/5
         [ResponseType(typeof(Chapter))]
-        public IHttpActionResult DeleteChapter(int id)
+        public async Task<IHttpActionResult> DeleteChapter(int id)
         {
-            Chapter chapter = db.Chapters.Find(id);
+            Chapter chapter = await db.Chapters.FindAsync(id);
             if (chapter == null)
             {
                 return NotFound();
             }
 
             db.Chapters.Remove(chapter);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
 
             return Ok(chapter);
         }

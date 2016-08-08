@@ -1,0 +1,42 @@
+﻿@model ThinkLogic.SubChapter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SubChapter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubChapterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubChapterName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chapter.ChapterName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chapter.ChapterName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubChapterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

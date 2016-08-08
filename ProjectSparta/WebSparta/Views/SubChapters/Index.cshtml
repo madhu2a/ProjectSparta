@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ThinkLogic.SubChapter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubChapterName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chapter.ChapterName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubChapterName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chapter.ChapterName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubChapterId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubChapterId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubChapterId })
+        </td>
+    </tr>
+}
+
+</table>
