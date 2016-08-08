@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSparta", "WebSparta\WebS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSparta.Tests", "WebSparta.Tests\WebSparta.Tests.csproj", "{3491245E-7200-4624-9F64-2C8E19352BE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{BC3FA6BE-D776-4DC9-8672-ADFA02A08C1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkLogic", "ThinkLogic\ThinkLogic.csproj", "{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{3491245E-7200-4624-9F64-2C8E19352BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3491245E-7200-4624-9F64-2C8E19352BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3491245E-7200-4624-9F64-2C8E19352BE1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BC3FA6BE-D776-4DC9-8672-ADFA02A08C1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BC3FA6BE-D776-4DC9-8672-ADFA02A08C1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BC3FA6BE-D776-4DC9-8672-ADFA02A08C1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BC3FA6BE-D776-4DC9-8672-ADFA02A08C1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
