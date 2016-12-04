@@ -13,12 +13,12 @@ namespace WebSparta.Controllers
 {
     public class AuthorsController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Authors
         public async Task<ActionResult> Index()
         {
-            return View(await db.Authors.ToListAsync());
+            return View(await db.Author.ToListAsync());
         }
 
         // GET: Authors/Details/5
@@ -28,7 +28,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Author author = await db.Authors.FindAsync(id);
+            Author author = await db.Author.FindAsync(id);
             if (author == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Authors.Add(author);
+                db.Author.Add(author);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Author author = await db.Authors.FindAsync(id);
+            Author author = await db.Author.FindAsync(id);
             if (author == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Author author = await db.Authors.FindAsync(id);
+            Author author = await db.Author.FindAsync(id);
             if (author == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Author author = await db.Authors.FindAsync(id);
-            db.Authors.Remove(author);
+            Author author = await db.Author.FindAsync(id);
+            db.Author.Remove(author);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

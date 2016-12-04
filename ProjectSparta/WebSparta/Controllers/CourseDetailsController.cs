@@ -13,7 +13,7 @@ namespace WebSparta.Controllers
 {
     public class CourseDetailsController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: CourseDetails
         public async Task<ActionResult> Index()
@@ -29,19 +29,19 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
-            if (courseDetail == null)
+            CourseDetails courseDetails = await db.CourseDetails.FindAsync(id);
+            if (courseDetails == null)
             {
                 return HttpNotFound();
             }
-            return View(courseDetail);
+            return View(courseDetails);
         }
 
         // GET: CourseDetails/Create
         public ActionResult Create()
         {
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "Name");
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
+            ViewBag.AuthorId = new SelectList(db.Author, "AuthorId", "Name");
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName");
             return View();
         }
 
@@ -50,18 +50,18 @@ namespace WebSparta.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CourseId,AuthorId,Level,DateOfAdd,Duration,Rating")] CourseDetail courseDetail)
+        public async Task<ActionResult> Create([Bind(Include = "CourseId,AuthorId,Level,DateOfAdd,Duration,Rating")] CourseDetails courseDetails)
         {
             if (ModelState.IsValid)
             {
-                db.CourseDetails.Add(courseDetail);
+                db.CourseDetails.Add(courseDetails);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "Name", courseDetail.AuthorId);
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", courseDetail.CourseId);
-            return View(courseDetail);
+            ViewBag.AuthorId = new SelectList(db.Author, "AuthorId", "Name", courseDetails.AuthorId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName", courseDetails.CourseId);
+            return View(courseDetails);
         }
 
         // GET: CourseDetails/Edit/5
@@ -71,14 +71,14 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
-            if (courseDetail == null)
+            CourseDetails courseDetails = await db.CourseDetails.FindAsync(id);
+            if (courseDetails == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "Name", courseDetail.AuthorId);
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", courseDetail.CourseId);
-            return View(courseDetail);
+            ViewBag.AuthorId = new SelectList(db.Author, "AuthorId", "Name", courseDetails.AuthorId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName", courseDetails.CourseId);
+            return View(courseDetails);
         }
 
         // POST: CourseDetails/Edit/5
@@ -86,17 +86,17 @@ namespace WebSparta.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CourseId,AuthorId,Level,DateOfAdd,Duration,Rating")] CourseDetail courseDetail)
+        public async Task<ActionResult> Edit([Bind(Include = "CourseId,AuthorId,Level,DateOfAdd,Duration,Rating")] CourseDetails courseDetails)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(courseDetail).State = EntityState.Modified;
+                db.Entry(courseDetails).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.AuthorId = new SelectList(db.Authors, "AuthorId", "Name", courseDetail.AuthorId);
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", courseDetail.CourseId);
-            return View(courseDetail);
+            ViewBag.AuthorId = new SelectList(db.Author, "AuthorId", "Name", courseDetails.AuthorId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName", courseDetails.CourseId);
+            return View(courseDetails);
         }
 
         // GET: CourseDetails/Delete/5
@@ -106,12 +106,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
-            if (courseDetail == null)
+            CourseDetails courseDetails = await db.CourseDetails.FindAsync(id);
+            if (courseDetails == null)
             {
                 return HttpNotFound();
             }
-            return View(courseDetail);
+            return View(courseDetails);
         }
 
         // POST: CourseDetails/Delete/5
@@ -119,8 +119,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
-            db.CourseDetails.Remove(courseDetail);
+            CourseDetails courseDetails = await db.CourseDetails.FindAsync(id);
+            db.CourseDetails.Remove(courseDetails);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

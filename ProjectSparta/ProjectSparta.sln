@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DBSparta", "DBSparta\DBSparta.sqlproj", "{0BF39F7D-BF77-4388-86AC-54ECC13552B9}"
 EndProject
@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APISparta", "APISparta\APIS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APISparta.Tests", "APISparta.Tests\APISparta.Tests.csproj", "{635B4A90-FB09-445E-ABBF-89C5154B52A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSparta", "WebSparta\WebSparta.csproj", "{E7A33A0D-843D-4BE7-A543-65360FD3971A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkLogic", "ThinkLogic\ThinkLogic.csproj", "{7F3348B5-3B79-48A4-ABC0-5602DADA1D6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSparta.Tests", "WebSparta.Tests\WebSparta.Tests.csproj", "{3491245E-7200-4624-9F64-2C8E19352BE1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSparta", "WebSparta\WebSparta.csproj", "{D817C7A2-643D-4AC3-B3EB-B6F0C106172B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkLogic", "ThinkLogic\ThinkLogic.csproj", "{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSparta.Tests", "WebSparta.Tests\WebSparta.Tests.csproj", "{37A09BA2-AE26-4CB8-8A92-33FB668FB8F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,18 +35,18 @@ Global
 		{635B4A90-FB09-445E-ABBF-89C5154B52A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{635B4A90-FB09-445E-ABBF-89C5154B52A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{635B4A90-FB09-445E-ABBF-89C5154B52A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E7A33A0D-843D-4BE7-A543-65360FD3971A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E7A33A0D-843D-4BE7-A543-65360FD3971A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E7A33A0D-843D-4BE7-A543-65360FD3971A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E7A33A0D-843D-4BE7-A543-65360FD3971A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3491245E-7200-4624-9F64-2C8E19352BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3491245E-7200-4624-9F64-2C8E19352BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3491245E-7200-4624-9F64-2C8E19352BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3491245E-7200-4624-9F64-2C8E19352BE1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F3348B5-3B79-48A4-ABC0-5602DADA1D6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F3348B5-3B79-48A4-ABC0-5602DADA1D6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F3348B5-3B79-48A4-ABC0-5602DADA1D6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F3348B5-3B79-48A4-ABC0-5602DADA1D6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D817C7A2-643D-4AC3-B3EB-B6F0C106172B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D817C7A2-643D-4AC3-B3EB-B6F0C106172B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D817C7A2-643D-4AC3-B3EB-B6F0C106172B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D817C7A2-643D-4AC3-B3EB-B6F0C106172B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37A09BA2-AE26-4CB8-8A92-33FB668FB8F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37A09BA2-AE26-4CB8-8A92-33FB668FB8F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37A09BA2-AE26-4CB8-8A92-33FB668FB8F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37A09BA2-AE26-4CB8-8A92-33FB668FB8F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

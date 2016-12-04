@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class CollegesController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Colleges
-        public IQueryable<College> GetColleges()
+        public IQueryable<College> GetCollege()
         {
-            return db.Colleges;
+            return db.College;
         }
 
         // GET: api/Colleges/5
         [ResponseType(typeof(College))]
         public async Task<IHttpActionResult> GetCollege(int id)
         {
-            College college = await db.Colleges.FindAsync(id);
+            College college = await db.College.FindAsync(id);
             if (college == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Colleges.Add(college);
+            db.College.Add(college);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = college.CollegeId }, college);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(College))]
         public async Task<IHttpActionResult> DeleteCollege(int id)
         {
-            College college = await db.Colleges.FindAsync(id);
+            College college = await db.College.FindAsync(id);
             if (college == null)
             {
                 return NotFound();
             }
 
-            db.Colleges.Remove(college);
+            db.College.Remove(college);
             await db.SaveChangesAsync();
 
             return Ok(college);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool CollegeExists(int id)
         {
-            return db.Colleges.Count(e => e.CollegeId == id) > 0;
+            return db.College.Count(e => e.CollegeId == id) > 0;
         }
     }
 }

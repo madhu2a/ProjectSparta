@@ -13,13 +13,13 @@ namespace WebSparta.Controllers
 {
     public class CoursesController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Courses
         public async Task<ActionResult> Index()
         {
-            var courses = db.Courses.Include(c => c.CourseDetail);
-            return View(await courses.ToListAsync());
+            var course = db.Course.Include(c => c.CourseDetails);
+            return View(await course.ToListAsync());
         }
 
         // GET: Courses/Details/5
@@ -29,7 +29,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = await db.Courses.FindAsync(id);
+            Course course = await db.Course.FindAsync(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Courses.Add(course);
+                db.Course.Add(course);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -69,7 +69,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = await db.Courses.FindAsync(id);
+            Course course = await db.Course.FindAsync(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -102,7 +102,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = await db.Courses.FindAsync(id);
+            Course course = await db.Course.FindAsync(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Course course = await db.Courses.FindAsync(id);
-            db.Courses.Remove(course);
+            Course course = await db.Course.FindAsync(id);
+            db.Course.Remove(course);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class StatesController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/States
-        public IQueryable<State> GetStates()
+        public IQueryable<State> GetState()
         {
-            return db.States;
+            return db.State;
         }
 
         // GET: api/States/5
         [ResponseType(typeof(State))]
         public async Task<IHttpActionResult> GetState(int id)
         {
-            State state = await db.States.FindAsync(id);
+            State state = await db.State.FindAsync(id);
             if (state == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.States.Add(state);
+            db.State.Add(state);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = state.StateId }, state);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(State))]
         public async Task<IHttpActionResult> DeleteState(int id)
         {
-            State state = await db.States.FindAsync(id);
+            State state = await db.State.FindAsync(id);
             if (state == null)
             {
                 return NotFound();
             }
 
-            db.States.Remove(state);
+            db.State.Remove(state);
             await db.SaveChangesAsync();
 
             return Ok(state);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool StateExists(int id)
         {
-            return db.States.Count(e => e.StateId == id) > 0;
+            return db.State.Count(e => e.StateId == id) > 0;
         }
     }
 }

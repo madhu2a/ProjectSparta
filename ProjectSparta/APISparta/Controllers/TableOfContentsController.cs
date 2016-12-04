@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class TableOfContentsController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/TableOfContents
-        public IQueryable<TableOfContent> GetTableOfContents()
+        public IQueryable<TableOfContent> GetTableOfContent()
         {
-            return db.TableOfContents;
+            return db.TableOfContent;
         }
 
         // GET: api/TableOfContents/5
         [ResponseType(typeof(TableOfContent))]
         public async Task<IHttpActionResult> GetTableOfContent(int id)
         {
-            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
+            TableOfContent tableOfContent = await db.TableOfContent.FindAsync(id);
             if (tableOfContent == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.TableOfContents.Add(tableOfContent);
+            db.TableOfContent.Add(tableOfContent);
 
             try
             {
@@ -105,13 +105,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(TableOfContent))]
         public async Task<IHttpActionResult> DeleteTableOfContent(int id)
         {
-            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
+            TableOfContent tableOfContent = await db.TableOfContent.FindAsync(id);
             if (tableOfContent == null)
             {
                 return NotFound();
             }
 
-            db.TableOfContents.Remove(tableOfContent);
+            db.TableOfContent.Remove(tableOfContent);
             await db.SaveChangesAsync();
 
             return Ok(tableOfContent);
@@ -128,7 +128,7 @@ namespace APISparta.Controllers
 
         private bool TableOfContentExists(int id)
         {
-            return db.TableOfContents.Count(e => e.CourseId == id) > 0;
+            return db.TableOfContent.Count(e => e.CourseId == id) > 0;
         }
     }
 }

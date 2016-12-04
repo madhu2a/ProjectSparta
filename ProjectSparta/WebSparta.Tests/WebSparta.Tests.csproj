@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3491245E-7200-4624-9F64-2C8E19352BE1}</ProjectGuid>
+    <ProjectGuid>{37A09BA2-AE26-4CB8-8A92-33FB668FB8F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebSparta.Tests</RootNamespace>
     <AssemblyName>WebSparta.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebSparta\WebSparta.csproj">
-      <Project>{E7A33A0D-843D-4BE7-A543-65360FD3971A}</Project>
+      <Project>{D817C7A2-643D-4AC3-B3EB-B6F0C106172B}</Project>
       <Name>WebSparta</Name>
     </ProjectReference>
   </ItemGroup>

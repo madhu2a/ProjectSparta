@@ -13,13 +13,13 @@ namespace WebSparta.Controllers
 {
     public class StatesController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: States
         public async Task<ActionResult> Index()
         {
-            var states = db.States.Include(s => s.Country);
-            return View(await states.ToListAsync());
+            var state = db.State.Include(s => s.Country);
+            return View(await state.ToListAsync());
         }
 
         // GET: States/Details/5
@@ -29,7 +29,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            State state = await db.States.FindAsync(id);
+            State state = await db.State.FindAsync(id);
             if (state == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace WebSparta.Controllers
         // GET: States/Create
         public ActionResult Create()
         {
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.CountryId = new SelectList(db.Country, "CountryId", "Name");
             return View();
         }
 
@@ -53,12 +53,12 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.States.Add(state);
+                db.State.Add(state);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", state.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "CountryId", "Name", state.CountryId);
             return View(state);
         }
 
@@ -69,12 +69,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            State state = await db.States.FindAsync(id);
+            State state = await db.State.FindAsync(id);
             if (state == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", state.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "CountryId", "Name", state.CountryId);
             return View(state);
         }
 
@@ -91,7 +91,7 @@ namespace WebSparta.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name", state.CountryId);
+            ViewBag.CountryId = new SelectList(db.Country, "CountryId", "Name", state.CountryId);
             return View(state);
         }
 
@@ -102,7 +102,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            State state = await db.States.FindAsync(id);
+            State state = await db.State.FindAsync(id);
             if (state == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            State state = await db.States.FindAsync(id);
-            db.States.Remove(state);
+            State state = await db.State.FindAsync(id);
+            db.State.Remove(state);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

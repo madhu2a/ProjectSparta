@@ -13,7 +13,7 @@ namespace WebSparta.Controllers
 {
     public class SkillsController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Skills
         public async Task<ActionResult> Index()
@@ -28,12 +28,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = await db.Skills.FindAsync(id);
-            if (skill == null)
+            Skills skills = await db.Skills.FindAsync(id);
+            if (skills == null)
             {
                 return HttpNotFound();
             }
-            return View(skill);
+            return View(skills);
         }
 
         // GET: Skills/Create
@@ -47,16 +47,16 @@ namespace WebSparta.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "SkillId,Name,Recognition,Description")] Skill skill)
+        public async Task<ActionResult> Create([Bind(Include = "SkillId,Name,Recognition,Description")] Skills skills)
         {
             if (ModelState.IsValid)
             {
-                db.Skills.Add(skill);
+                db.Skills.Add(skills);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(skill);
+            return View(skills);
         }
 
         // GET: Skills/Edit/5
@@ -66,12 +66,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = await db.Skills.FindAsync(id);
-            if (skill == null)
+            Skills skills = await db.Skills.FindAsync(id);
+            if (skills == null)
             {
                 return HttpNotFound();
             }
-            return View(skill);
+            return View(skills);
         }
 
         // POST: Skills/Edit/5
@@ -79,15 +79,15 @@ namespace WebSparta.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "SkillId,Name,Recognition,Description")] Skill skill)
+        public async Task<ActionResult> Edit([Bind(Include = "SkillId,Name,Recognition,Description")] Skills skills)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(skill).State = EntityState.Modified;
+                db.Entry(skills).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(skill);
+            return View(skills);
         }
 
         // GET: Skills/Delete/5
@@ -97,12 +97,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Skill skill = await db.Skills.FindAsync(id);
-            if (skill == null)
+            Skills skills = await db.Skills.FindAsync(id);
+            if (skills == null)
             {
                 return HttpNotFound();
             }
-            return View(skill);
+            return View(skills);
         }
 
         // POST: Skills/Delete/5
@@ -110,8 +110,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Skill skill = await db.Skills.FindAsync(id);
-            db.Skills.Remove(skill);
+            Skills skills = await db.Skills.FindAsync(id);
+            db.Skills.Remove(skills);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

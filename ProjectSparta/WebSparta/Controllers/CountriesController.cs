@@ -13,12 +13,12 @@ namespace WebSparta.Controllers
 {
     public class CountriesController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Countries
         public async Task<ActionResult> Index()
         {
-            return View(await db.Countries.ToListAsync());
+            return View(await db.Country.ToListAsync());
         }
 
         // GET: Countries/Details/5
@@ -28,7 +28,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = await db.Countries.FindAsync(id);
+            Country country = await db.Country.FindAsync(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Countries.Add(country);
+                db.Country.Add(country);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = await db.Countries.FindAsync(id);
+            Country country = await db.Country.FindAsync(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = await db.Countries.FindAsync(id);
+            Country country = await db.Country.FindAsync(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Country country = await db.Countries.FindAsync(id);
-            db.Countries.Remove(country);
+            Country country = await db.Country.FindAsync(id);
+            db.Country.Remove(country);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

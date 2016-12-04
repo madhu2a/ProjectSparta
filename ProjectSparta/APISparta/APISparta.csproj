@@ -125,13 +125,13 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\SubChaptersController.cs" />
     <Compile Include="Controllers\TableOfContentsController.cs" />
-    <Compile Include="Controllers\vwTableOfContentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\PublishProfiles\apisparta - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -141,7 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ThinkLogic\ThinkLogic.csproj">
-      <Project>{c4d8f4b4-8929-45e8-8899-cef7a9fc973b}</Project>
+      <Project>{7f3348b5-3b79-48a4-abc0-5602dada1d6c}</Project>
       <Name>ThinkLogic</Name>
     </ProjectReference>
   </ItemGroup>

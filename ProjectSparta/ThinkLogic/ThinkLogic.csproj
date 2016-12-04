@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C4D8F4B4-8929-45E8-8899-CEF7A9FC973B}</ProjectGuid>
+    <ProjectGuid>{7F3348B5-3B79-48A4-ABC0-5602DADA1D6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ThinkLogic</RootNamespace>
     <AssemblyName>ThinkLogic</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -52,83 +52,80 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Author.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="Chapter.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="College.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="Country.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
-    <Compile Include="CourseDetail.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+    <Compile Include="CourseDetails.cs">
+      <DependentUpon>dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="dal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dal.edmx</DependentUpon>
     </Compile>
     <Compile Include="District.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Logics.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Logics.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Logics.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Logics.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Logics.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Logics.edmx</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Skill.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+    <Compile Include="Skills.cs">
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="State.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="SubChapter.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
     <Compile Include="TableOfContent.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
-    </Compile>
-    <Compile Include="vwTableOfContent.cs">
-      <DependentUpon>Logics.tt</DependentUpon>
+      <DependentUpon>dal.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Logics.edmx">
+    <EntityDeploy Include="dal.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Logics.Designer.cs</LastGenOutput>
+      <LastGenOutput>dal.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Logics.edmx.diagram">
-      <DependentUpon>Logics.edmx</DependentUpon>
+    <None Include="dal.edmx.diagram">
+      <DependentUpon>dal.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="dal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dal.edmx</DependentUpon>
+      <LastGenOutput>dal.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="dal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>dal.edmx</DependentUpon>
+      <LastGenOutput>dal.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Logics.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Logics.edmx</DependentUpon>
-      <LastGenOutput>Logics.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Logics.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Logics.edmx</DependentUpon>
-      <LastGenOutput>Logics.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

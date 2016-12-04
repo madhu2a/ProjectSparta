@@ -13,13 +13,13 @@ namespace WebSparta.Controllers
 {
     public class CollegesController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Colleges
         public async Task<ActionResult> Index()
         {
-            var colleges = db.Colleges.Include(c => c.District).Include(c => c.State);
-            return View(await colleges.ToListAsync());
+            var college = db.College.Include(c => c.District).Include(c => c.State);
+            return View(await college.ToListAsync());
         }
 
         // GET: Colleges/Details/5
@@ -29,7 +29,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            College college = await db.Colleges.FindAsync(id);
+            College college = await db.College.FindAsync(id);
             if (college == null)
             {
                 return HttpNotFound();
@@ -40,8 +40,8 @@ namespace WebSparta.Controllers
         // GET: Colleges/Create
         public ActionResult Create()
         {
-            ViewBag.DistrictId = new SelectList(db.Districts, "DistrictId", "Name");
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name");
+            ViewBag.DistrictId = new SelectList(db.District, "DistrictId", "Name");
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name");
             return View();
         }
 
@@ -54,13 +54,13 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Colleges.Add(college);
+                db.College.Add(college);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DistrictId = new SelectList(db.Districts, "DistrictId", "Name", college.DistrictId);
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name", college.StateId);
+            ViewBag.DistrictId = new SelectList(db.District, "DistrictId", "Name", college.DistrictId);
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name", college.StateId);
             return View(college);
         }
 
@@ -71,13 +71,13 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            College college = await db.Colleges.FindAsync(id);
+            College college = await db.College.FindAsync(id);
             if (college == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DistrictId = new SelectList(db.Districts, "DistrictId", "Name", college.DistrictId);
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name", college.StateId);
+            ViewBag.DistrictId = new SelectList(db.District, "DistrictId", "Name", college.DistrictId);
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name", college.StateId);
             return View(college);
         }
 
@@ -94,8 +94,8 @@ namespace WebSparta.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.DistrictId = new SelectList(db.Districts, "DistrictId", "Name", college.DistrictId);
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name", college.StateId);
+            ViewBag.DistrictId = new SelectList(db.District, "DistrictId", "Name", college.DistrictId);
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name", college.StateId);
             return View(college);
         }
 
@@ -106,7 +106,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            College college = await db.Colleges.FindAsync(id);
+            College college = await db.College.FindAsync(id);
             if (college == null)
             {
                 return HttpNotFound();
@@ -119,8 +119,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            College college = await db.Colleges.FindAsync(id);
-            db.Colleges.Remove(college);
+            College college = await db.College.FindAsync(id);
+            db.College.Remove(college);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

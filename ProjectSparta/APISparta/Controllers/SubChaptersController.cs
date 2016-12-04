@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class SubChaptersController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/SubChapters
-        public IQueryable<SubChapter> GetSubChapters()
+        public IQueryable<SubChapter> GetSubChapter()
         {
-            return db.SubChapters;
+            return db.SubChapter;
         }
 
         // GET: api/SubChapters/5
         [ResponseType(typeof(SubChapter))]
         public async Task<IHttpActionResult> GetSubChapter(int id)
         {
-            SubChapter subChapter = await db.SubChapters.FindAsync(id);
+            SubChapter subChapter = await db.SubChapter.FindAsync(id);
             if (subChapter == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.SubChapters.Add(subChapter);
+            db.SubChapter.Add(subChapter);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = subChapter.SubChapterId }, subChapter);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(SubChapter))]
         public async Task<IHttpActionResult> DeleteSubChapter(int id)
         {
-            SubChapter subChapter = await db.SubChapters.FindAsync(id);
+            SubChapter subChapter = await db.SubChapter.FindAsync(id);
             if (subChapter == null)
             {
                 return NotFound();
             }
 
-            db.SubChapters.Remove(subChapter);
+            db.SubChapter.Remove(subChapter);
             await db.SaveChangesAsync();
 
             return Ok(subChapter);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool SubChapterExists(int id)
         {
-            return db.SubChapters.Count(e => e.SubChapterId == id) > 0;
+            return db.SubChapter.Count(e => e.SubChapterId == id) > 0;
         }
     }
 }

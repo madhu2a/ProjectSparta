@@ -13,12 +13,12 @@ namespace WebSparta.Controllers
 {
     public class TableOfContentsController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: TableOfContents
         public async Task<ActionResult> Index()
         {
-            return View(await db.TableOfContents.ToListAsync());
+            return View(await db.TableOfContent.ToListAsync());
         }
 
         // GET: TableOfContents/Details/5
@@ -28,7 +28,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
+            TableOfContent tableOfContent = await db.TableOfContent.FindAsync(id);
             if (tableOfContent == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TableOfContents.Add(tableOfContent);
+                db.TableOfContent.Add(tableOfContent);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
+            TableOfContent tableOfContent = await db.TableOfContent.FindAsync(id);
             if (tableOfContent == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
+            TableOfContent tableOfContent = await db.TableOfContent.FindAsync(id);
             if (tableOfContent == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            TableOfContent tableOfContent = await db.TableOfContents.FindAsync(id);
-            db.TableOfContents.Remove(tableOfContent);
+            TableOfContent tableOfContent = await db.TableOfContent.FindAsync(id);
+            db.TableOfContent.Remove(tableOfContent);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

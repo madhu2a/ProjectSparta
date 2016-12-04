@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class AuthorsController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Authors
-        public IQueryable<Author> GetAuthors()
+        public IQueryable<Author> GetAuthor()
         {
-            return db.Authors;
+            return db.Author;
         }
 
         // GET: api/Authors/5
         [ResponseType(typeof(Author))]
         public async Task<IHttpActionResult> GetAuthor(int id)
         {
-            Author author = await db.Authors.FindAsync(id);
+            Author author = await db.Author.FindAsync(id);
             if (author == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Authors.Add(author);
+            db.Author.Add(author);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = author.AuthorId }, author);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(Author))]
         public async Task<IHttpActionResult> DeleteAuthor(int id)
         {
-            Author author = await db.Authors.FindAsync(id);
+            Author author = await db.Author.FindAsync(id);
             if (author == null)
             {
                 return NotFound();
             }
 
-            db.Authors.Remove(author);
+            db.Author.Remove(author);
             await db.SaveChangesAsync();
 
             return Ok(author);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool AuthorExists(int id)
         {
-            return db.Authors.Count(e => e.AuthorId == id) > 0;
+            return db.Author.Count(e => e.AuthorId == id) > 0;
         }
     }
 }

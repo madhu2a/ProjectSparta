@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class DistrictsController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Districts
-        public IQueryable<District> GetDistricts()
+        public IQueryable<District> GetDistrict()
         {
-            return db.Districts;
+            return db.District;
         }
 
         // GET: api/Districts/5
         [ResponseType(typeof(District))]
         public async Task<IHttpActionResult> GetDistrict(int id)
         {
-            District district = await db.Districts.FindAsync(id);
+            District district = await db.District.FindAsync(id);
             if (district == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Districts.Add(district);
+            db.District.Add(district);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = district.DistrictId }, district);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(District))]
         public async Task<IHttpActionResult> DeleteDistrict(int id)
         {
-            District district = await db.Districts.FindAsync(id);
+            District district = await db.District.FindAsync(id);
             if (district == null)
             {
                 return NotFound();
             }
 
-            db.Districts.Remove(district);
+            db.District.Remove(district);
             await db.SaveChangesAsync();
 
             return Ok(district);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool DistrictExists(int id)
         {
-            return db.Districts.Count(e => e.DistrictId == id) > 0;
+            return db.District.Count(e => e.DistrictId == id) > 0;
         }
     }
 }

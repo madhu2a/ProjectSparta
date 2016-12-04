@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class CoursesController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Courses
-        public IQueryable<Course> GetCourses()
+        public IQueryable<Course> GetCourse()
         {
-            return db.Courses;
+            return db.Course;
         }
 
         // GET: api/Courses/5
         [ResponseType(typeof(Course))]
         public async Task<IHttpActionResult> GetCourse(int id)
         {
-            Course course = await db.Courses.FindAsync(id);
+            Course course = await db.Course.FindAsync(id);
             if (course == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Courses.Add(course);
+            db.Course.Add(course);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = course.CourseId }, course);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(Course))]
         public async Task<IHttpActionResult> DeleteCourse(int id)
         {
-            Course course = await db.Courses.FindAsync(id);
+            Course course = await db.Course.FindAsync(id);
             if (course == null)
             {
                 return NotFound();
             }
 
-            db.Courses.Remove(course);
+            db.Course.Remove(course);
             await db.SaveChangesAsync();
 
             return Ok(course);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool CourseExists(int id)
         {
-            return db.Courses.Count(e => e.CourseId == id) > 0;
+            return db.Course.Count(e => e.CourseId == id) > 0;
         }
     }
 }

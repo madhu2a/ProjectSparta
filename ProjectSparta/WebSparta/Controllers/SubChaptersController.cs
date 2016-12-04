@@ -13,13 +13,13 @@ namespace WebSparta.Controllers
 {
     public class SubChaptersController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: SubChapters
         public async Task<ActionResult> Index()
         {
-            var subChapters = db.SubChapters.Include(s => s.Chapter);
-            return View(await subChapters.ToListAsync());
+            var subChapter = db.SubChapter.Include(s => s.Chapter);
+            return View(await subChapter.ToListAsync());
         }
 
         // GET: SubChapters/Details/5
@@ -29,7 +29,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubChapter subChapter = await db.SubChapters.FindAsync(id);
+            SubChapter subChapter = await db.SubChapter.FindAsync(id);
             if (subChapter == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace WebSparta.Controllers
         // GET: SubChapters/Create
         public ActionResult Create()
         {
-            ViewBag.ChapterId = new SelectList(db.Chapters, "ChapterId", "ChapterName");
+            ViewBag.ChapterId = new SelectList(db.Chapter, "ChapterId", "ChapterName");
             return View();
         }
 
@@ -53,12 +53,12 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SubChapters.Add(subChapter);
+                db.SubChapter.Add(subChapter);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ChapterId = new SelectList(db.Chapters, "ChapterId", "ChapterName", subChapter.ChapterId);
+            ViewBag.ChapterId = new SelectList(db.Chapter, "ChapterId", "ChapterName", subChapter.ChapterId);
             return View(subChapter);
         }
 
@@ -69,12 +69,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubChapter subChapter = await db.SubChapters.FindAsync(id);
+            SubChapter subChapter = await db.SubChapter.FindAsync(id);
             if (subChapter == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ChapterId = new SelectList(db.Chapters, "ChapterId", "ChapterName", subChapter.ChapterId);
+            ViewBag.ChapterId = new SelectList(db.Chapter, "ChapterId", "ChapterName", subChapter.ChapterId);
             return View(subChapter);
         }
 
@@ -91,7 +91,7 @@ namespace WebSparta.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.ChapterId = new SelectList(db.Chapters, "ChapterId", "ChapterName", subChapter.ChapterId);
+            ViewBag.ChapterId = new SelectList(db.Chapter, "ChapterId", "ChapterName", subChapter.ChapterId);
             return View(subChapter);
         }
 
@@ -102,7 +102,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SubChapter subChapter = await db.SubChapters.FindAsync(id);
+            SubChapter subChapter = await db.SubChapter.FindAsync(id);
             if (subChapter == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            SubChapter subChapter = await db.SubChapters.FindAsync(id);
-            db.SubChapters.Remove(subChapter);
+            SubChapter subChapter = await db.SubChapter.FindAsync(id);
+            db.SubChapter.Remove(subChapter);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

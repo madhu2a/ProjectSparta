@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class ChaptersController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Chapters
-        public IQueryable<Chapter> GetChapters()
+        public IQueryable<Chapter> GetChapter()
         {
-            return db.Chapters;
+            return db.Chapter;
         }
 
         // GET: api/Chapters/5
         [ResponseType(typeof(Chapter))]
         public async Task<IHttpActionResult> GetChapter(int id)
         {
-            Chapter chapter = await db.Chapters.FindAsync(id);
+            Chapter chapter = await db.Chapter.FindAsync(id);
             if (chapter == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Chapters.Add(chapter);
+            db.Chapter.Add(chapter);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = chapter.ChapterId }, chapter);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(Chapter))]
         public async Task<IHttpActionResult> DeleteChapter(int id)
         {
-            Chapter chapter = await db.Chapters.FindAsync(id);
+            Chapter chapter = await db.Chapter.FindAsync(id);
             if (chapter == null)
             {
                 return NotFound();
             }
 
-            db.Chapters.Remove(chapter);
+            db.Chapter.Remove(chapter);
             await db.SaveChangesAsync();
 
             return Ok(chapter);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool ChapterExists(int id)
         {
-            return db.Chapters.Count(e => e.ChapterId == id) > 0;
+            return db.Chapter.Count(e => e.ChapterId == id) > 0;
         }
     }
 }

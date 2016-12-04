@@ -15,42 +15,42 @@ namespace APISparta.Controllers
 {
     public class CourseDetailsController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/CourseDetails
-        public IQueryable<CourseDetail> GetCourseDetails()
+        public IQueryable<CourseDetails> GetCourseDetails()
         {
             return db.CourseDetails;
         }
 
         // GET: api/CourseDetails/5
-        [ResponseType(typeof(CourseDetail))]
-        public async Task<IHttpActionResult> GetCourseDetail(int id)
+        [ResponseType(typeof(CourseDetails))]
+        public async Task<IHttpActionResult> GetCourseDetails(int id)
         {
-            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
-            if (courseDetail == null)
+            CourseDetails courseDetails = await db.CourseDetails.FindAsync(id);
+            if (courseDetails == null)
             {
                 return NotFound();
             }
 
-            return Ok(courseDetail);
+            return Ok(courseDetails);
         }
 
         // PUT: api/CourseDetails/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutCourseDetail(int id, CourseDetail courseDetail)
+        public async Task<IHttpActionResult> PutCourseDetails(int id, CourseDetails courseDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != courseDetail.CourseId)
+            if (id != courseDetails.CourseId)
             {
                 return BadRequest();
             }
 
-            db.Entry(courseDetail).State = EntityState.Modified;
+            db.Entry(courseDetails).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace APISparta.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CourseDetailExists(id))
+                if (!CourseDetailsExists(id))
                 {
                     return NotFound();
                 }
@@ -72,15 +72,15 @@ namespace APISparta.Controllers
         }
 
         // POST: api/CourseDetails
-        [ResponseType(typeof(CourseDetail))]
-        public async Task<IHttpActionResult> PostCourseDetail(CourseDetail courseDetail)
+        [ResponseType(typeof(CourseDetails))]
+        public async Task<IHttpActionResult> PostCourseDetails(CourseDetails courseDetails)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.CourseDetails.Add(courseDetail);
+            db.CourseDetails.Add(courseDetails);
 
             try
             {
@@ -88,7 +88,7 @@ namespace APISparta.Controllers
             }
             catch (DbUpdateException)
             {
-                if (CourseDetailExists(courseDetail.CourseId))
+                if (CourseDetailsExists(courseDetails.CourseId))
                 {
                     return Conflict();
                 }
@@ -98,23 +98,23 @@ namespace APISparta.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = courseDetail.CourseId }, courseDetail);
+            return CreatedAtRoute("DefaultApi", new { id = courseDetails.CourseId }, courseDetails);
         }
 
         // DELETE: api/CourseDetails/5
-        [ResponseType(typeof(CourseDetail))]
-        public async Task<IHttpActionResult> DeleteCourseDetail(int id)
+        [ResponseType(typeof(CourseDetails))]
+        public async Task<IHttpActionResult> DeleteCourseDetails(int id)
         {
-            CourseDetail courseDetail = await db.CourseDetails.FindAsync(id);
-            if (courseDetail == null)
+            CourseDetails courseDetails = await db.CourseDetails.FindAsync(id);
+            if (courseDetails == null)
             {
                 return NotFound();
             }
 
-            db.CourseDetails.Remove(courseDetail);
+            db.CourseDetails.Remove(courseDetails);
             await db.SaveChangesAsync();
 
-            return Ok(courseDetail);
+            return Ok(courseDetails);
         }
 
         protected override void Dispose(bool disposing)
@@ -126,7 +126,7 @@ namespace APISparta.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CourseDetailExists(int id)
+        private bool CourseDetailsExists(int id)
         {
             return db.CourseDetails.Count(e => e.CourseId == id) > 0;
         }

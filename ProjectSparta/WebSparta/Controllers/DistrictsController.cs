@@ -13,13 +13,13 @@ namespace WebSparta.Controllers
 {
     public class DistrictsController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Districts
         public async Task<ActionResult> Index()
         {
-            var districts = db.Districts.Include(d => d.State);
-            return View(await districts.ToListAsync());
+            var district = db.District.Include(d => d.State);
+            return View(await district.ToListAsync());
         }
 
         // GET: Districts/Details/5
@@ -29,7 +29,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            District district = await db.Districts.FindAsync(id);
+            District district = await db.District.FindAsync(id);
             if (district == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace WebSparta.Controllers
         // GET: Districts/Create
         public ActionResult Create()
         {
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name");
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name");
             return View();
         }
 
@@ -53,12 +53,12 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Districts.Add(district);
+                db.District.Add(district);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name", district.StateId);
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name", district.StateId);
             return View(district);
         }
 
@@ -69,12 +69,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            District district = await db.Districts.FindAsync(id);
+            District district = await db.District.FindAsync(id);
             if (district == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name", district.StateId);
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name", district.StateId);
             return View(district);
         }
 
@@ -91,7 +91,7 @@ namespace WebSparta.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.StateId = new SelectList(db.States, "StateId", "Name", district.StateId);
+            ViewBag.StateId = new SelectList(db.State, "StateId", "Name", district.StateId);
             return View(district);
         }
 
@@ -102,7 +102,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            District district = await db.Districts.FindAsync(id);
+            District district = await db.District.FindAsync(id);
             if (district == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            District district = await db.Districts.FindAsync(id);
-            db.Districts.Remove(district);
+            District district = await db.District.FindAsync(id);
+            db.District.Remove(district);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

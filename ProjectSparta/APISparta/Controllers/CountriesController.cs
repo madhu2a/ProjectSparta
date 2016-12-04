@@ -15,19 +15,19 @@ namespace APISparta.Controllers
 {
     public class CountriesController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Countries
-        public IQueryable<Country> GetCountries()
+        public IQueryable<Country> GetCountry()
         {
-            return db.Countries;
+            return db.Country;
         }
 
         // GET: api/Countries/5
         [ResponseType(typeof(Country))]
         public async Task<IHttpActionResult> GetCountry(int id)
         {
-            Country country = await db.Countries.FindAsync(id);
+            Country country = await db.Country.FindAsync(id);
             if (country == null)
             {
                 return NotFound();
@@ -80,7 +80,7 @@ namespace APISparta.Controllers
                 return BadRequest(ModelState);
             }
 
-            db.Countries.Add(country);
+            db.Country.Add(country);
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = country.CountryId }, country);
@@ -90,13 +90,13 @@ namespace APISparta.Controllers
         [ResponseType(typeof(Country))]
         public async Task<IHttpActionResult> DeleteCountry(int id)
         {
-            Country country = await db.Countries.FindAsync(id);
+            Country country = await db.Country.FindAsync(id);
             if (country == null)
             {
                 return NotFound();
             }
 
-            db.Countries.Remove(country);
+            db.Country.Remove(country);
             await db.SaveChangesAsync();
 
             return Ok(country);
@@ -113,7 +113,7 @@ namespace APISparta.Controllers
 
         private bool CountryExists(int id)
         {
-            return db.Countries.Count(e => e.CountryId == id) > 0;
+            return db.Country.Count(e => e.CountryId == id) > 0;
         }
     }
 }

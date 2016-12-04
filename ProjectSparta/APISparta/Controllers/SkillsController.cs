@@ -15,42 +15,42 @@ namespace APISparta.Controllers
 {
     public class SkillsController : ApiController
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: api/Skills
-        public IQueryable<Skill> GetSkills()
+        public IQueryable<Skills> GetSkills()
         {
             return db.Skills;
         }
 
         // GET: api/Skills/5
-        [ResponseType(typeof(Skill))]
-        public async Task<IHttpActionResult> GetSkill(int id)
+        [ResponseType(typeof(Skills))]
+        public async Task<IHttpActionResult> GetSkills(int id)
         {
-            Skill skill = await db.Skills.FindAsync(id);
-            if (skill == null)
+            Skills skills = await db.Skills.FindAsync(id);
+            if (skills == null)
             {
                 return NotFound();
             }
 
-            return Ok(skill);
+            return Ok(skills);
         }
 
         // PUT: api/Skills/5
         [ResponseType(typeof(void))]
-        public async Task<IHttpActionResult> PutSkill(int id, Skill skill)
+        public async Task<IHttpActionResult> PutSkills(int id, Skills skills)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != skill.SkillId)
+            if (id != skills.SkillId)
             {
                 return BadRequest();
             }
 
-            db.Entry(skill).State = EntityState.Modified;
+            db.Entry(skills).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +58,7 @@ namespace APISparta.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SkillExists(id))
+                if (!SkillsExists(id))
                 {
                     return NotFound();
                 }
@@ -72,34 +72,34 @@ namespace APISparta.Controllers
         }
 
         // POST: api/Skills
-        [ResponseType(typeof(Skill))]
-        public async Task<IHttpActionResult> PostSkill(Skill skill)
+        [ResponseType(typeof(Skills))]
+        public async Task<IHttpActionResult> PostSkills(Skills skills)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Skills.Add(skill);
+            db.Skills.Add(skills);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = skill.SkillId }, skill);
+            return CreatedAtRoute("DefaultApi", new { id = skills.SkillId }, skills);
         }
 
         // DELETE: api/Skills/5
-        [ResponseType(typeof(Skill))]
-        public async Task<IHttpActionResult> DeleteSkill(int id)
+        [ResponseType(typeof(Skills))]
+        public async Task<IHttpActionResult> DeleteSkills(int id)
         {
-            Skill skill = await db.Skills.FindAsync(id);
-            if (skill == null)
+            Skills skills = await db.Skills.FindAsync(id);
+            if (skills == null)
             {
                 return NotFound();
             }
 
-            db.Skills.Remove(skill);
+            db.Skills.Remove(skills);
             await db.SaveChangesAsync();
 
-            return Ok(skill);
+            return Ok(skills);
         }
 
         protected override void Dispose(bool disposing)
@@ -111,7 +111,7 @@ namespace APISparta.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SkillExists(int id)
+        private bool SkillsExists(int id)
         {
             return db.Skills.Count(e => e.SkillId == id) > 0;
         }

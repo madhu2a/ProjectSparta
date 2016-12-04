@@ -13,13 +13,13 @@ namespace WebSparta.Controllers
 {
     public class ChaptersController : Controller
     {
-        private dbSpartaEntities1 db = new dbSpartaEntities1();
+        private DBSpartaEntities db = new DBSpartaEntities();
 
         // GET: Chapters
         public async Task<ActionResult> Index()
         {
-            var chapters = db.Chapters.Include(c => c.Course);
-            return View(await chapters.ToListAsync());
+            var chapter = db.Chapter.Include(c => c.Course);
+            return View(await chapter.ToListAsync());
         }
 
         // GET: Chapters/Details/5
@@ -29,7 +29,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapters.FindAsync(id);
+            Chapter chapter = await db.Chapter.FindAsync(id);
             if (chapter == null)
             {
                 return HttpNotFound();
@@ -40,7 +40,7 @@ namespace WebSparta.Controllers
         // GET: Chapters/Create
         public ActionResult Create()
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName");
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName");
             return View();
         }
 
@@ -53,12 +53,12 @@ namespace WebSparta.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Chapters.Add(chapter);
+                db.Chapter.Add(chapter);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", chapter.CourseId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName", chapter.CourseId);
             return View(chapter);
         }
 
@@ -69,12 +69,12 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapters.FindAsync(id);
+            Chapter chapter = await db.Chapter.FindAsync(id);
             if (chapter == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", chapter.CourseId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName", chapter.CourseId);
             return View(chapter);
         }
 
@@ -91,7 +91,7 @@ namespace WebSparta.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "CourseId", "CourseName", chapter.CourseId);
+            ViewBag.CourseId = new SelectList(db.Course, "CourseId", "CourseName", chapter.CourseId);
             return View(chapter);
         }
 
@@ -102,7 +102,7 @@ namespace WebSparta.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Chapter chapter = await db.Chapters.FindAsync(id);
+            Chapter chapter = await db.Chapter.FindAsync(id);
             if (chapter == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace WebSparta.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Chapter chapter = await db.Chapters.FindAsync(id);
-            db.Chapters.Remove(chapter);
+            Chapter chapter = await db.Chapter.FindAsync(id);
+            db.Chapter.Remove(chapter);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
